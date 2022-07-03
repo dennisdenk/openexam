@@ -1,27 +1,42 @@
-# Test
+# Nuxt 3 Minimal Starter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.6.
+Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 
-## Development server
+## Setup
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Make sure to install the dependencies:
 
-## Code scaffolding
+```bash
+# yarn
+yarn install
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# npm
+npm install
 
-## Build
+# pnpm
+pnpm install --shamefully-hoist
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Development Server
 
-## Running unit tests
+Start the development server on http://localhost:3000
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm run dev
+```
 
-## Running end-to-end tests
+## Production
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Build the application for production:
 
-## Further help
+```bash
+npm run build
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Locally preview production build:
+
+```bash
+npm run preview
+```
+
+Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
