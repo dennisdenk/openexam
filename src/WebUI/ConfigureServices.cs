@@ -1,16 +1,20 @@
-﻿using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Infrastructure.Persistence;
-using CleanArchitecture.WebUI.Filters;
-using CleanArchitecture.WebUI.Services;
-using FluentValidation.AspNetCore;
+﻿using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using OpenExam.Application.Common.Interfaces;
+using OpenExam.Infrastructure.Persistence;
+using OpenExam.WebUI.Filters;
+using OpenExam.WebUI.Services;
 
-namespace Microsoft.Extensions.DependencyInjection;
+namespace OpenExam.WebUI;
 
 public static class ConfigureServices
 {
-    public static IServiceCollection AddWebUIServices(this IServiceCollection services)
+    public static IServiceCollection AddWebUIServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -54,6 +58,46 @@ public static class ConfigureServices
             });
         });
 
+        services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer()
+            .AddOpenIdConnect(options =>
+            {
+                // options.Authority = Configuration["Oidc:Authority"]; configuration
+                options.Authority = configuration.GetSection("Identity").GetSection("Authority").Value;
+                options.ClientId = configuration.GetSection("Identity").GetSection("ClientId").Value;
+                options.ClientSecret = configuration.GetSection("Identity").GetSection("ClientSecret").Value;
+                options.SaveTokens = true;
+                // TODO: Schauen was da am meisten Sinn ergibt
+                options.ResponseType = OpenIdConnectResponseType.Code; //Configuration["Oidc:ResponseType"];
+                options.RequireHttpsMetadata = false; // dev only
+                options.GetClaimsFromUserInfoEndpoint = true;
+                options.Scope.Add("openid");
+                options.Scope.Add("profile");
+                options.Scope.Add("email");
+                options.Scope.Add("claims");
+                options.SaveTokens = true;
+                //options.Events = new OpenIdConnectEvents
+                //{
+                //    OnTokenResponseReceived = async ctx =>
+                //    {
+                //        var a = ctx.Principal;
+                //    },
+                //    OnAuthorizationCodeReceived = async ctx =>
+                //    {
+                //        var a = ctx.Principal;
+                //    }
+                //};
+
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    NameClaimType = "name", RoleClaimType = "groups", ValidateIssuer = true
+                };
+            });
+
         /* services.AddOpenApiDocument(configure =>
         {
             configure.Title = "OpenExam API";
@@ -67,6 +111,8 @@ public static class ConfigureServices
 
             configure.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT"));
         }); */
+        
+        services.AddAuthorization();
 
         return services;
     }

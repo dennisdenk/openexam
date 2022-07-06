@@ -1,12 +1,12 @@
 ﻿using System.Runtime.Serialization;
 using AutoMapper;
-using CleanArchitecture.Application.Common.Mappings;
-using CleanArchitecture.Application.Common.Models;
-using CleanArchitecture.Application.TodoLists.Queries.GetTodos;
-using CleanArchitecture.Domain.Entities;
 using NUnit.Framework;
+using OpenExam.Application.Common.Mappings;
+using OpenExam.Application.Common.Models;
+using OpenExam.Application.TodoLists.Queries.GetTodos;
+using OpenExam.Domain.Entities;
 
-namespace CleanArchitecture.Application.UnitTests.Common.Mappings;
+namespace OpenExam.Application.UnitTests.Common.Mappings;
 
 public class MappingTests
 {

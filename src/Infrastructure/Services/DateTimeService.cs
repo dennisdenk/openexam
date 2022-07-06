@@ -1,6 +1,6 @@
-﻿using CleanArchitecture.Application.Common.Interfaces;
+﻿using OpenExam.Application.Common.Interfaces;
 
-namespace CleanArchitecture.Infrastructure.Services;
+namespace OpenExam.Infrastructure.Services;
 
 public class DateTimeService : IDateTime
 {

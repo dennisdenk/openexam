@@ -1,4 +1,4 @@
-namespace CleanArchitecture.Infrastructure.Services;
+namespace OpenExam.Infrastructure.Services;
 
 public class BlobStorageConfiguration
 {

@@ -1,4 +1,4 @@
-﻿namespace CleanArchitecture.Domain.Common;
+﻿namespace OpenExam.Domain.Common;
 
 public abstract class BaseAuditableEntity : BaseEntity
 {

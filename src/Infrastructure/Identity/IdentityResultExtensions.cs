@@ -1,7 +1,7 @@
-﻿using CleanArchitecture.Application.Common.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
+using OpenExam.Application.Common.Models;
 
-namespace CleanArchitecture.Infrastructure.Identity;
+namespace OpenExam.Infrastructure.Identity;
 
 public static class IdentityResultExtensions
 {

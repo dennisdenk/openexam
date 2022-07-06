@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
 using MediatR;
-using ValidationException = CleanArchitecture.Application.Common.Exceptions.ValidationException;
+using ValidationException = OpenExam.Application.Common.Exceptions.ValidationException;
 
-namespace CleanArchitecture.Application.Common.Behaviours;
+namespace OpenExam.Application.Common.Behaviours;
 
 public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
      where TRequest : notnull
@@ -30,7 +30,7 @@ public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TReque
                 .ToList();
 
             if (failures.Any())
-                throw new ValidationException(failures);
+                throw new Exceptions.ValidationException(failures);
         }
         return await next();
     }

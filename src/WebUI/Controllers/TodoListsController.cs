@@ -1,12 +1,12 @@
-﻿using CleanArchitecture.Application.TodoLists.Commands.CreateTodoList;
-using CleanArchitecture.Application.TodoLists.Commands.DeleteTodoList;
-using CleanArchitecture.Application.TodoLists.Commands.UpdateTodoList;
-using CleanArchitecture.Application.TodoLists.Queries.ExportTodos;
-using CleanArchitecture.Application.TodoLists.Queries.GetTodos;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using OpenExam.Application.TodoLists.Commands.CreateTodoList;
+using OpenExam.Application.TodoLists.Commands.DeleteTodoList;
+using OpenExam.Application.TodoLists.Commands.UpdateTodoList;
+using OpenExam.Application.TodoLists.Queries.ExportTodos;
+using OpenExam.Application.TodoLists.Queries.GetTodos;
 
-namespace CleanArchitecture.WebUI.Controllers;
+namespace OpenExam.WebUI.Controllers;
 
 [Authorize]
 public class TodoListsController : ApiControllerBase

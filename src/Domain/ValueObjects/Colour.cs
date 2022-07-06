@@ -1,4 +1,7 @@
-﻿namespace CleanArchitecture.Domain.ValueObjects;
+﻿using OpenExam.Domain.Common;
+using OpenExam.Domain.Exceptions;
+
+namespace OpenExam.Domain.ValueObjects;
 
 public class Colour : ValueObject
 {

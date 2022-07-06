@@ -1,10 +1,10 @@
-﻿using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Application.Common.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using OpenExam.Application.Common.Interfaces;
+using OpenExam.Application.Common.Models;
 
-namespace CleanArchitecture.Infrastructure.Identity;
+namespace OpenExam.Infrastructure.Identity;
 
 public class IdentityService : IIdentityService
 {

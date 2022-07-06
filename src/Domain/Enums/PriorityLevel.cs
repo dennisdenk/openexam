@@ -1,4 +1,4 @@
-﻿namespace CleanArchitecture.Domain.Enums;
+﻿namespace OpenExam.Domain.Enums;
 
 public enum PriorityLevel
 {

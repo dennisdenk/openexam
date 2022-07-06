@@ -1,7 +1,7 @@
-﻿using CleanArchitecture.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using OpenExam.Domain.Entities;
 
-namespace CleanArchitecture.Application.Common.Interfaces;
+namespace OpenExam.Application.Common.Interfaces;
 
 public interface IApplicationDbContext
 {

@@ -1,10 +1,10 @@
-using CleanArchitecture.Application.Common.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Minio;
 using Minio.Exceptions;
+using OpenExam.Application.Common.Interfaces;
 
-namespace CleanArchitecture.Infrastructure.Services;
+namespace OpenExam.Infrastructure.Services;
 
 public class BlobStorageContext: IBlobStorageContext
 {

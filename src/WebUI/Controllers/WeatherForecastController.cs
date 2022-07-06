@@ -1,7 +1,7 @@
-﻿using CleanArchitecture.Application.WeatherForecasts.Queries.GetWeatherForecasts;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using OpenExam.Application.WeatherForecasts.Queries.GetWeatherForecasts;
 
-namespace CleanArchitecture.WebUI.Controllers;
+namespace OpenExam.WebUI.Controllers;
 
 public class WeatherForecastController : ApiControllerBase
 {

@@ -1,13 +1,13 @@
-﻿using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Infrastructure.Persistence;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
+using OpenExam.Application.Common.Interfaces;
+using OpenExam.Infrastructure.Persistence;
 
-namespace CleanArchitecture.Application.IntegrationTests;
+namespace OpenExam.Application.IntegrationTests;
 
 using static Testing;
 

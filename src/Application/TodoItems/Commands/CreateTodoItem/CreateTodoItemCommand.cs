@@ -1,9 +1,9 @@
-﻿using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Domain.Events;
-using MediatR;
+﻿using MediatR;
+using OpenExam.Application.Common.Interfaces;
+using OpenExam.Domain.Entities;
+using OpenExam.Domain.Events;
 
-namespace CleanArchitecture.Application.TodoItems.Commands.CreateTodoItem;
+namespace OpenExam.Application.TodoItems.Commands.CreateTodoItem;
 
 public record CreateTodoItemCommand : IRequest<int>
 {

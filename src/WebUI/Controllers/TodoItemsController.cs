@@ -1,13 +1,13 @@
-﻿using CleanArchitecture.Application.Common.Models;
-using CleanArchitecture.Application.TodoItems.Commands.CreateTodoItem;
-using CleanArchitecture.Application.TodoItems.Commands.DeleteTodoItem;
-using CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItem;
-using CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItemDetail;
-using CleanArchitecture.Application.TodoItems.Queries.GetTodoItemsWithPagination;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using OpenExam.Application.Common.Models;
+using OpenExam.Application.TodoItems.Commands.CreateTodoItem;
+using OpenExam.Application.TodoItems.Commands.DeleteTodoItem;
+using OpenExam.Application.TodoItems.Commands.UpdateTodoItem;
+using OpenExam.Application.TodoItems.Commands.UpdateTodoItemDetail;
+using OpenExam.Application.TodoItems.Queries.GetTodoItemsWithPagination;
 
-namespace CleanArchitecture.WebUI.Controllers;
+namespace OpenExam.WebUI.Controllers;
 
 [Authorize]
 public class TodoItemsController : ApiControllerBase

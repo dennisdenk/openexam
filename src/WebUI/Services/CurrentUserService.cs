@@ -1,8 +1,7 @@
 ﻿using System.Security.Claims;
+using OpenExam.Application.Common.Interfaces;
 
-using CleanArchitecture.Application.Common.Interfaces;
-
-namespace CleanArchitecture.WebUI.Services;
+namespace OpenExam.WebUI.Services;
 
 public class CurrentUserService : ICurrentUserService
 {

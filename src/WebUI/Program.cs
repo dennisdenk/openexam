@@ -1,11 +1,14 @@
-using CleanArchitecture.Infrastructure.Persistence;
+using OpenExam.Application;
+using OpenExam.Infrastructure;
+using OpenExam.Infrastructure.Persistence;
+using OpenExam.WebUI;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
-builder.Services.AddWebUIServices();
+builder.Services.AddWebUIServices(builder.Configuration);
 
 var app = builder.Build();
 
@@ -54,7 +57,7 @@ if (app.Environment.IsDevelopment())
 app.UseRouting();
 
 app.UseAuthentication();
-app.UseIdentityServer();
+// app.UseIdentityServer();
 app.UseAuthorization();
 
 app.MapControllerRoute(

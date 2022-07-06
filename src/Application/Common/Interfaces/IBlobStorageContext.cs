@@ -1,4 +1,4 @@
-namespace CleanArchitecture.Application.Common.Interfaces;
+namespace OpenExam.Application.Common.Interfaces;
 
 
 public interface IBlobStorageContext

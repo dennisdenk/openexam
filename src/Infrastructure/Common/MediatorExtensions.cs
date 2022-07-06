@@ -1,7 +1,8 @@
-﻿using CleanArchitecture.Domain.Common;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using OpenExam.Domain.Common;
 
-namespace MediatR;
+namespace OpenExam.Infrastructure.Common;
 
 public static class MediatorExtensions
 {

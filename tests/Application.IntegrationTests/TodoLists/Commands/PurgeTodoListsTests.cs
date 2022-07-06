@@ -1,12 +1,12 @@
-﻿using CleanArchitecture.Application.Common.Exceptions;
-using CleanArchitecture.Application.Common.Security;
-using CleanArchitecture.Application.TodoLists.Commands.CreateTodoList;
-using CleanArchitecture.Application.TodoLists.Commands.PurgeTodoLists;
-using CleanArchitecture.Domain.Entities;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
+using OpenExam.Application.Common.Exceptions;
+using OpenExam.Application.Common.Security;
+using OpenExam.Application.TodoLists.Commands.CreateTodoList;
+using OpenExam.Application.TodoLists.Commands.PurgeTodoLists;
+using OpenExam.Domain.Entities;
 
-namespace CleanArchitecture.Application.IntegrationTests.TodoLists.Commands;
+namespace OpenExam.Application.IntegrationTests.TodoLists.Commands;
 
 using static Testing;
 

@@ -1,9 +1,9 @@
-﻿using CleanArchitecture.Application.Common.Exceptions;
-using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Domain.Entities;
-using MediatR;
+﻿using MediatR;
+using OpenExam.Application.Common.Exceptions;
+using OpenExam.Application.Common.Interfaces;
+using OpenExam.Domain.Entities;
 
-namespace CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItem;
+namespace OpenExam.Application.TodoItems.Commands.UpdateTodoItem;
 
 public record UpdateTodoItemCommand : IRequest
 {

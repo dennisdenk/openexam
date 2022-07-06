@@ -1,10 +1,11 @@
-﻿using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Infrastructure.Identity;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Logging;
+using OpenExam.Domain.Entities;
+using OpenExam.Infrastructure.Identity;
 
-namespace CleanArchitecture.Infrastructure.Persistence;
+namespace OpenExam.Infrastructure.Persistence;
 
 public class ApplicationDbContextInitialiser
 {
@@ -26,6 +27,9 @@ public class ApplicationDbContextInitialiser
         try
         {
             if (_context.Database.IsSqlServer())
+            {
+                await _context.Database.MigrateAsync();
+            } else if (_context.Database.IsNpgsql())
             {
                 await _context.Database.MigrateAsync();
             }
@@ -61,13 +65,13 @@ public class ApplicationDbContextInitialiser
         }
 
         // Default users
-        var administrator = new ApplicationUser { UserName = "administrator@localhost", Email = "administrator@localhost" };
+        // var administrator = new ApplicationUser { UserName = "administrator@localhost", Email = "administrator@localhost" };
 
-        if (_userManager.Users.All(u => u.UserName != administrator.UserName))
+        /* if (_userManager.Users.All(u => u.UserName != administrator.UserName))
         {
             await _userManager.CreateAsync(administrator, "Administrator1!");
             await _userManager.AddToRolesAsync(administrator, new[] { administratorRole.Name });
-        }
+        } */
 
         // Default data
         // Seed, if necessary

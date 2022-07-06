@@ -1,9 +1,9 @@
-﻿using CleanArchitecture.Application.Common.Exceptions;
-using FluentAssertions;
+﻿using FluentAssertions;
 using FluentValidation.Results;
 using NUnit.Framework;
+using OpenExam.Application.Common.Exceptions;
 
-namespace CleanArchitecture.Application.UnitTests.Common.Exceptions;
+namespace OpenExam.Application.UnitTests.Common.Exceptions;
 
 public class ValidationExceptionTests
 {

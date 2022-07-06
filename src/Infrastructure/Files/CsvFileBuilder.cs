@@ -1,10 +1,10 @@
 ﻿using System.Globalization;
-using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Application.TodoLists.Queries.ExportTodos;
-using CleanArchitecture.Infrastructure.Files.Maps;
 using CsvHelper;
+using OpenExam.Application.Common.Interfaces;
+using OpenExam.Application.TodoLists.Queries.ExportTodos;
+using OpenExam.Infrastructure.Files.Maps;
 
-namespace CleanArchitecture.Infrastructure.Files;
+namespace OpenExam.Infrastructure.Files;
 
 public class CsvFileBuilder : ICsvFileBuilder
 {

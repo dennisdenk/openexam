@@ -1,10 +1,10 @@
-﻿using CleanArchitecture.Application.TodoLists.Queries.GetTodos;
-using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Domain.ValueObjects;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
+using OpenExam.Application.TodoLists.Queries.GetTodos;
+using OpenExam.Domain.Entities;
+using OpenExam.Domain.ValueObjects;
 
-namespace CleanArchitecture.Application.IntegrationTests.TodoLists.Queries;
+namespace OpenExam.Application.IntegrationTests.TodoLists.Queries;
 
 using static Testing;
 

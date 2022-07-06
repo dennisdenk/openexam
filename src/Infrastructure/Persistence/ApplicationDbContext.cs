@@ -1,15 +1,16 @@
 ﻿using System.Reflection;
-using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Infrastructure.Identity;
-using CleanArchitecture.Infrastructure.Persistence.Interceptors;
+using OpenExam.Infrastructure.Common;
 using Duende.IdentityServer.EntityFramework.Options;
 using MediatR;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using OpenExam.Application.Common.Interfaces;
+using OpenExam.Domain.Entities;
+using OpenExam.Infrastructure.Identity;
+using OpenExam.Infrastructure.Persistence.Interceptors;
 
-namespace CleanArchitecture.Infrastructure.Persistence;
+namespace OpenExam.Infrastructure.Persistence;
 
 public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, IApplicationDbContext
 {

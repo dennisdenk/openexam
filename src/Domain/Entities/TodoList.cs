@@ -1,4 +1,7 @@
-﻿namespace CleanArchitecture.Domain.Entities;
+﻿using OpenExam.Domain.Common;
+using OpenExam.Domain.ValueObjects;
+
+namespace OpenExam.Domain.Entities;
 
 public class TodoList : BaseAuditableEntity
 {

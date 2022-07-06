@@ -1,8 +1,8 @@
-﻿using CleanArchitecture.Domain.Events;
-using MediatR;
+﻿using MediatR;
 using Microsoft.Extensions.Logging;
+using OpenExam.Domain.Events;
 
-namespace CleanArchitecture.Application.TodoItems.EventHandlers;
+namespace OpenExam.Application.TodoItems.EventHandlers;
 
 public class TodoItemCreatedEventHandler : INotificationHandler<TodoItemCreatedEvent>
 {

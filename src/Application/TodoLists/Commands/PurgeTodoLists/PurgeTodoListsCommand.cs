@@ -1,8 +1,8 @@
-﻿using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Application.Common.Security;
-using MediatR;
+﻿using MediatR;
+using OpenExam.Application.Common.Interfaces;
+using OpenExam.Application.Common.Security;
 
-namespace CleanArchitecture.Application.TodoLists.Commands.PurgeTodoLists;
+namespace OpenExam.Application.TodoLists.Commands.PurgeTodoLists;
 
 [Authorize(Roles = "Administrator")]
 [Authorize(Policy = "CanPurge")]

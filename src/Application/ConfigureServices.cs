@@ -1,9 +1,10 @@
 ﻿using System.Reflection;
-using CleanArchitecture.Application.Common.Behaviours;
 using FluentValidation;
 using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using OpenExam.Application.Common.Behaviours;
 
-namespace Microsoft.Extensions.DependencyInjection;
+namespace OpenExam.Application;
 
 public static class ConfigureServices
 {

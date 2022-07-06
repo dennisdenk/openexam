@@ -1,4 +1,8 @@
-﻿namespace CleanArchitecture.Domain.Entities;
+﻿using OpenExam.Domain.Common;
+using OpenExam.Domain.Enums;
+using OpenExam.Domain.Events;
+
+namespace OpenExam.Domain.Entities;
 
 public class TodoItem : BaseAuditableEntity
 {

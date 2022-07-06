@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using CleanArchitecture.Application.Common.Mappings;
-using CleanArchitecture.Domain.Entities;
+using OpenExam.Application.Common.Mappings;
+using OpenExam.Domain.Entities;
 
-namespace CleanArchitecture.Application.TodoLists.Queries.GetTodos;
+namespace OpenExam.Application.TodoLists.Queries.GetTodos;
 
 public class TodoItemDto : IMapFrom<TodoItem>
 {

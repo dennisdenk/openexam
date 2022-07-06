@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using CleanArchitecture.Application.Common.Models;
 using Microsoft.EntityFrameworkCore;
+using OpenExam.Application.Common.Models;
 
-namespace CleanArchitecture.Application.Common.Mappings;
+namespace OpenExam.Application.Common.Mappings;
 
 public static class MappingExtensions
 {

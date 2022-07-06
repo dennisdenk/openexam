@@ -1,15 +1,15 @@
-﻿using CleanArchitecture.Infrastructure.Identity;
-using CleanArchitecture.Infrastructure.Persistence;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
+using OpenExam.Infrastructure.Identity;
+using OpenExam.Infrastructure.Persistence;
 using Respawn;
 
-namespace CleanArchitecture.Application.IntegrationTests;
+namespace OpenExam.Application.IntegrationTests;
 
 [SetUpFixture]
 public partial class Testing

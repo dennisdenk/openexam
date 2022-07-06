@@ -1,10 +1,10 @@
-﻿using CleanArchitecture.Application.Common.Exceptions;
-using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Domain.Events;
-using MediatR;
+﻿using MediatR;
+using OpenExam.Application.Common.Exceptions;
+using OpenExam.Application.Common.Interfaces;
+using OpenExam.Domain.Entities;
+using OpenExam.Domain.Events;
 
-namespace CleanArchitecture.Application.TodoItems.Commands.DeleteTodoItem;
+namespace OpenExam.Application.TodoItems.Commands.DeleteTodoItem;
 
 public record DeleteTodoItemCommand(int Id) : IRequest;
 

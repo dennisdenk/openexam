@@ -1,8 +1,8 @@
 ﻿using System.Globalization;
-using CleanArchitecture.Application.TodoLists.Queries.ExportTodos;
 using CsvHelper.Configuration;
+using OpenExam.Application.TodoLists.Queries.ExportTodos;
 
-namespace CleanArchitecture.Infrastructure.Files.Maps;
+namespace OpenExam.Infrastructure.Files.Maps;
 
 public class TodoItemRecordMap : ClassMap<TodoItemRecord>
 {

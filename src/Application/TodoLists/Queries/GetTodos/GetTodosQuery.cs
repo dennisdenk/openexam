@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Application.Common.Security;
-using CleanArchitecture.Domain.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using OpenExam.Application.Common.Interfaces;
+using OpenExam.Application.Common.Security;
+using OpenExam.Domain.Enums;
 
-namespace CleanArchitecture.Application.TodoLists.Queries.GetTodos;
+namespace OpenExam.Application.TodoLists.Queries.GetTodos;
 
 [Authorize]
 public record GetTodosQuery : IRequest<TodosVm>;

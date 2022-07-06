@@ -1,4 +1,6 @@
-namespace CleanArchitecture.WebUI.AcceptanceTests.StepDefinitions;
+using OpenExam.WebUI.AcceptanceTests.Pages;
+
+namespace OpenExam.WebUI.AcceptanceTests.StepDefinitions;
 
 [Binding]
 public sealed class LoginStepDefinitions

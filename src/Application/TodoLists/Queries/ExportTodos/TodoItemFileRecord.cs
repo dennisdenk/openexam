@@ -1,7 +1,7 @@
-﻿using CleanArchitecture.Application.Common.Mappings;
-using CleanArchitecture.Domain.Entities;
+﻿using OpenExam.Application.Common.Mappings;
+using OpenExam.Domain.Entities;
 
-namespace CleanArchitecture.Application.TodoLists.Queries.ExportTodos;
+namespace OpenExam.Application.TodoLists.Queries.ExportTodos;
 
 public class TodoItemRecord : IMapFrom<TodoItem>
 {

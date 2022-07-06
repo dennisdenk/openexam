@@ -1,15 +1,16 @@
-﻿using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Infrastructure.Files;
-using CleanArchitecture.Infrastructure.Identity;
-using CleanArchitecture.Infrastructure.Persistence;
-using CleanArchitecture.Infrastructure.Persistence.Interceptors;
-using CleanArchitecture.Infrastructure.Services;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using OpenExam.Application.Common.Interfaces;
+using OpenExam.Infrastructure.Files;
+using OpenExam.Infrastructure.Identity;
+using OpenExam.Infrastructure.Persistence;
+using OpenExam.Infrastructure.Persistence.Interceptors;
+using OpenExam.Infrastructure.Services;
 
-namespace Microsoft.Extensions.DependencyInjection;
+namespace OpenExam.Infrastructure;
 
 public static class ConfigureServices
 {
@@ -25,8 +26,10 @@ public static class ConfigureServices
         else
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
+                options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"),
                     builder => builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+            // options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
+            // builder => builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
         }
 
         services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
@@ -44,6 +47,8 @@ public static class ConfigureServices
         services.AddTransient<IDateTime, DateTimeService>();
         services.AddTransient<IIdentityService, IdentityService>();
         services.AddTransient<ICsvFileBuilder, CsvFileBuilder>();
+        
+        services.AddScoped<IBlobStorageContext, BlobStorageContext>();
 
         services.AddAuthentication()
             .AddIdentityServerJwt();

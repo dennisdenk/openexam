@@ -1,10 +1,10 @@
-﻿using CleanArchitecture.Application.Common.Exceptions;
-using CleanArchitecture.Application.TodoLists.Commands.CreateTodoList;
-using CleanArchitecture.Domain.Entities;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
+using OpenExam.Application.Common.Exceptions;
+using OpenExam.Application.TodoLists.Commands.CreateTodoList;
+using OpenExam.Domain.Entities;
 
-namespace CleanArchitecture.Application.IntegrationTests.TodoLists.Commands;
+namespace OpenExam.Application.IntegrationTests.TodoLists.Commands;
 
 using static Testing;
 

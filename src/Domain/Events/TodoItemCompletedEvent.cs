@@ -1,4 +1,7 @@
-﻿namespace CleanArchitecture.Domain.Events;
+﻿using OpenExam.Domain.Common;
+using OpenExam.Domain.Entities;
+
+namespace OpenExam.Domain.Events;
 
 public class TodoItemCompletedEvent : BaseEvent
 {

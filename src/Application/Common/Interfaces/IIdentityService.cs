@@ -1,6 +1,6 @@
-﻿using CleanArchitecture.Application.Common.Models;
+﻿using OpenExam.Application.Common.Models;
 
-namespace CleanArchitecture.Application.Common.Interfaces;
+namespace OpenExam.Application.Common.Interfaces;
 
 public interface IIdentityService
 {

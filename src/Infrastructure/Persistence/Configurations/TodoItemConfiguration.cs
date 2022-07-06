@@ -1,8 +1,8 @@
-﻿using CleanArchitecture.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using OpenExam.Domain.Entities;
 
-namespace CleanArchitecture.Infrastructure.Persistence.Configurations;
+namespace OpenExam.Infrastructure.Persistence.Configurations;
 
 public class TodoItemConfiguration : IEntityTypeConfiguration<TodoItem>
 {

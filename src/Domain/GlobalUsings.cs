@@ -1,6 +1,6 @@
-﻿global using CleanArchitecture.Domain.Common;
-global using CleanArchitecture.Domain.Entities;
-global using CleanArchitecture.Domain.Enums;
-global using CleanArchitecture.Domain.Events;
-global using CleanArchitecture.Domain.Exceptions;
-global using CleanArchitecture.Domain.ValueObjects;
+﻿global using OpenExam.Domain.Common;
+global using OpenExam.Domain.Entities;
+global using OpenExam.Domain.Enums;
+global using OpenExam.Domain.Events;
+global using OpenExam.Domain.Exceptions;
+global using OpenExam.Domain.ValueObjects;
