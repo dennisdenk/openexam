@@ -1,35 +1,36 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using OpenExam.Application.Common.Exceptions;
 using OpenExam.Application.Common.Interfaces;
 using OpenExam.Domain.Entities;
 using OpenExam.Domain.Events;
 
-namespace OpenExam.Application.Submission.Commands.DeleteSubmission;
+namespace OpenExam.Application.Exam.Commands.DeleteExam;
 
-public record DeleteSubmissionCommand(int Id) : IRequest;
+public record DeleteExamCommand(string Id) : IRequest;
 
-public class DeleteSubmissionCommandHandler : IRequestHandler<DeleteSubmissionCommand>
+public class DeleteExamCommandHandler : IRequestHandler<DeleteExamCommand>
 {
     private readonly IApplicationDbContext _context;
 
-    public DeleteSubmissionCommandHandler(IApplicationDbContext context)
+    public DeleteExamCommandHandler(IApplicationDbContext context)
     {
         _context = context;
     }
 
-    public async Task<Unit> Handle(DeleteSubmissionCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(DeleteExamCommand request, CancellationToken cancellationToken)
     {
-        var entity = await _context.TodoItems
-            .FindAsync(new object[] { request.Id }, cancellationToken);
+        var entity = await _context.Exams
+            .FirstOrDefaultAsync(e => e.ExamId.Equals(request.Id), cancellationToken);
 
         if (entity == null)
         {
-            throw new NotFoundException(nameof(TodoItem), request.Id);
+            throw new NotFoundException(nameof(Domain.Entities.Exam), request.Id);
         }
 
-        _context.TodoItems.Remove(entity);
+        _context.Exams.Remove(entity);
 
-        entity.AddDomainEvent(new TodoItemDeletedEvent(entity));
+        // entity.AddDomainEvent(new TodoItemDeletedEvent(entity));
 
         await _context.SaveChangesAsync(cancellationToken);
 

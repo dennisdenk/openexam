@@ -1,40 +1,52 @@
 ﻿using MediatR;
+using NodaTime;
 using OpenExam.Application.Common.Exceptions;
 using OpenExam.Application.Common.Interfaces;
 using OpenExam.Domain.Entities;
 
-namespace OpenExam.Application.Submission.Commands.UpdateSubmission;
+namespace OpenExam.Application.Exam.Commands.UpdateExam;
 
-public record UpdateSubmissionCommand : IRequest
+public record UpdateExamCommand : IRequest
 {
-    public int Id { get; init; }
-
-    public string? Title { get; init; }
-
-    public bool Done { get; init; }
+    public string Id { get; set; }
+    public string Title { get; set; }
+    
+    public string ExamFilePath { get; set; }
+    
+    public LocalDateTime StartTime { get; set; }
+    
+    public LocalDateTime EndTime { get; set; }
+    
+    public LocalDateTime LatestSubmissionTime { get; set; }
+    
+    public string? Description { get; set; }
 }
 
-public class UpdateSubmissionCommandHandler : IRequestHandler<UpdateSubmissionCommand>
+public class UpdateExamCommandHandler : IRequestHandler<UpdateExamCommand>
 {
     private readonly IApplicationDbContext _context;
 
-    public UpdateSubmissionCommandHandler(IApplicationDbContext context)
+    public UpdateExamCommandHandler(IApplicationDbContext context)
     {
         _context = context;
     }
 
-    public async Task<Unit> Handle(UpdateSubmissionCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(UpdateExamCommand request, CancellationToken cancellationToken)
     {
-        var entity = await _context.TodoItems
+        var entity = await _context.Exams
             .FindAsync(new object[] { request.Id }, cancellationToken);
 
         if (entity == null)
         {
-            throw new NotFoundException(nameof(TodoItem), request.Id);
+            throw new NotFoundException(nameof(Domain.Entities.Exam), request.Id);
         }
 
         entity.Title = request.Title;
-        entity.Done = request.Done;
+        entity.FileName = request.ExamFilePath;
+        entity.StartTime = request.StartTime;
+        entity.EndTime = request.EndTime;
+        entity.LatestSubmissionTime = request.LatestSubmissionTime;
+        entity.Description = request.Description;
 
         await _context.SaveChangesAsync(cancellationToken);
 

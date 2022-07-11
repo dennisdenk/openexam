@@ -7,7 +7,7 @@ namespace OpenExam.Application.Exam.Queries.GetSubmissionsByExamWithPaginationQu
 
 public record GetExamsQuery() : IRequest<List<Domain.Entities.Exam>>
 {
-    public string ExamId { get; init; }
+    // public string ExamId { get; init; }
 }
 
 public class GetExamsQueryHandler : IRequestHandler<GetExamsQuery, List<Domain.Entities.Exam>>
@@ -24,8 +24,6 @@ public class GetExamsQueryHandler : IRequestHandler<GetExamsQuery, List<Domain.E
     public async Task<List<Domain.Entities.Exam>> Handle(GetExamsQuery request, CancellationToken cancellationToken)
     {
         var exams = await _context.Exams.ToListAsync(cancellationToken);
-
-
         return exams;
 
         /*return await _context.TodoItems

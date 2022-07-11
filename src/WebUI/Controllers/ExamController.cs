@@ -1,20 +1,37 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OpenExam.Application.Submission.Queries.GetSubmissionsByExamWithPaginationQuery;
-using OpenExam.Application.TodoLists.Commands.CreateTodoList;
-using OpenExam.Application.TodoLists.Commands.DeleteTodoList;
-using OpenExam.Application.TodoLists.Commands.UpdateTodoList;
-using OpenExam.Application.TodoLists.Queries.ExportTodos;
-using OpenExam.Application.TodoLists.Queries.GetTodos;
+using OpenExam.Application.Exam.Commands.CreateExam;
+using OpenExam.Application.Exam.Commands.DeleteExam;
+using OpenExam.Application.Exam.Commands.UpdateExam;
+using OpenExam.Application.Exam.Queries.GetSubmissionsByExamWithPaginationQuery;
 using OpenExam.Domain.Entities;
 
 namespace OpenExam.WebUI.Controllers;
 
 // [Authorize]
-public class SubmissionController : ApiControllerBase
+public class ExamController : ApiControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<List<Submission>>> GetByExamId([FromQuery] GetSubmissionsByExamWithPaginationQuery query)
+    public async Task<ActionResult<List<Exam>>> GetAll()
+    {
+        return await Mediator.Send(new GetExamsQuery());
+    }
+    
+    [HttpPost]
+    public async Task<Exam> CreateExam([FromQuery] CreateExamCommand query)
+    {
+        return await Mediator.Send(query);
+    }
+    
+    [HttpPut]
+    public async Task<Unit> UpdateExam([FromQuery] UpdateExamCommand query)
+    {
+        return await Mediator.Send(query);
+    }
+    
+    [HttpDelete]
+    public async Task<Unit> DeleteExam([FromQuery] DeleteExamCommand query)
     {
         return await Mediator.Send(query);
     }

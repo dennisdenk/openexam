@@ -1,6 +1,6 @@
 ﻿using OpenExam.Application.Common.Mappings;
 
-namespace OpenExam.Application.Submission.Queries.GetSubmissionsByExamWithPaginationQuery;
+namespace OpenExam.Application.Exam.Queries.GetSubmissionsByExamWithPaginationQuery;
 
 public class SubmissionDto : IMapFrom<Domain.Entities.Submission>
 {

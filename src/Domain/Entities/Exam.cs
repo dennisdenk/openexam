@@ -16,7 +16,12 @@ public class Exam : BaseAuditableEntity
     [Key]
     public Guid ExamId { get; set; }
     
+    public string Title { get; set; }
+    
+    // Eher Pfad als Name
     public string? FileName { get; set; }
+    
+    public FileUpload? ExamFile { get; set; }
     
     public LocalDateTime StartTime { get; set; }
     
@@ -28,7 +33,7 @@ public class Exam : BaseAuditableEntity
     
     public ICollection<UserAccount>? Examiner { get; set; } 
     
-    public ICollection<Submission> Submissions { get; set; }
+    public List<Submission> Submissions { get; set; }
 
     public string? Description { get; set; }
     

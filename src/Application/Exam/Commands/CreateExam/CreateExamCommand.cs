@@ -2,12 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using NodaTime;
 using OpenExam.Application.Common.Interfaces;
-using OpenExam.Domain.Entities;
-using OpenExam.Domain.Events;
 
-namespace OpenExam.Application.Submission.Commands.CreateSubmission;
+namespace OpenExam.Application.Exam.Commands.CreateExam;
 
-public record CreateExamCommand : IRequest<Exam>
+public record CreateExamCommand : IRequest<Domain.Entities.Exam>
 {
     public string Title { get; set; }
     
@@ -22,7 +20,7 @@ public record CreateExamCommand : IRequest<Exam>
     public string? Description { get; set; }
 }
 
-public class CreateExamCommandHandler : IRequestHandler<CreateExamCommand, Exam>
+public class CreateExamCommandHandler : IRequestHandler<CreateExamCommand, Domain.Entities.Exam>
 {
     private readonly IApplicationDbContext _context;
 
@@ -31,15 +29,16 @@ public class CreateExamCommandHandler : IRequestHandler<CreateExamCommand, Exam>
         _context = context;
     }
 
-    public async Task<Exam> Handle(CreateExamCommand request, CancellationToken cancellationToken)
+    public async Task<Domain.Entities.Exam> Handle(CreateExamCommand request, CancellationToken cancellationToken)
     {
-        var entity = new Exam()
+        var entity = new Domain.Entities.Exam()
         {
             FileName = request.ExamFilePath,
             Title = request.Title,
             StartTime = request.StartTime,
             EndTime = request.EndTime,
-            LatestSubmissionTime = request.LatestSubmissionTime
+            LatestSubmissionTime = request.LatestSubmissionTime,
+            Description = request.Description
         };
 
 
