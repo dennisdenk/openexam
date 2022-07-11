@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using OpenExam.Domain.Events;
 
-namespace OpenExam.Application.Users.EventHandlers;
+namespace OpenExam.Application.UserAccount.EventHandlers;
 
 public class TodoItemCompletedEventHandler : INotificationHandler<TodoItemCompletedEvent>
 {

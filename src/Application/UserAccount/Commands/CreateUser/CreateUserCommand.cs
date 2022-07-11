@@ -3,7 +3,7 @@ using OpenExam.Application.Common.Interfaces;
 using OpenExam.Domain.Entities;
 using OpenExam.Domain.Events;
 
-namespace OpenExam.Application.Users.Commands.CreateUser;
+namespace OpenExam.Application.UserAccount.Commands.CreateUser;
 
 public record CreateTodoItemCommand : IRequest<int>
 {

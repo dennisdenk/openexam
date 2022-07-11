@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace OpenExam.Application.Users.Commands.UpdateUser;
+namespace OpenExam.Application.Submission.Commands.UpdateSubmission;
 
 public class UpdateSubmissionCommandValidator : AbstractValidator<UpdateSubmissionCommand>
 {

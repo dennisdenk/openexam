@@ -3,7 +3,7 @@ using OpenExam.Application.Common.Exceptions;
 using OpenExam.Application.Common.Interfaces;
 using OpenExam.Domain.Entities;
 
-namespace OpenExam.Application.Users.Commands.UpdateUser;
+namespace OpenExam.Application.UserAccount.Commands.UpdateUser;
 
 public record UpdateTodoItemCommand : IRequest
 {

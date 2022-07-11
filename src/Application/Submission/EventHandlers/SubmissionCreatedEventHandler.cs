@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using OpenExam.Domain.Events;
 
-namespace OpenExam.Application.Users.EventHandlers;
+namespace OpenExam.Application.Submission.EventHandlers;
 
 public class SubmissionCreatedEventHandler : INotificationHandler<SubmissionCreatedEvent>
 {

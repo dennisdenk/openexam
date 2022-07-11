@@ -31,10 +31,43 @@ public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, 
     public DbSet<TodoList> TodoLists => Set<TodoList>();
 
     public DbSet<TodoItem> TodoItems => Set<TodoItem>();
+    
+    public DbSet<UserAccount> Users => Set<UserAccount>();
+    
+    public DbSet<Exam> Exams => Set<Exam>();
+    
+    public DbSet<FileUpload> FileUploads => Set<FileUpload>();
+    
+    public DbSet<Submission> Submissions => Set<Submission>();
+    
+    public DbSet<Examinee> Examinees => Set<Examinee>();
+    
+    public DbSet<UserRole> UserRoles => Set<UserRole>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        
+        /*builder.Entity<Exam>()
+            .HasMany(p => p.Examinees)
+            .WithMany(p => p.Exam)*/
+
+        builder.Entity<Submission>()
+            .HasMany(e => e.Correctors)
+            .WithMany(e => e.ExamsToGrade)
+            .UsingEntity(j => j.ToTable("SubmissionCorrectors"));
+        
+        /*builder.Entity<Submission>()
+            .HasOne(s => s.Submitter)
+            .WithMany(e => e.E)*/
+        
+        /*builder.Entity<UserAccount>()
+            .HasMany(u => u.Submissions)
+            .WithOne(s => s.)*/
+
+        /*builder.Entity<Examinee>()
+            .HasOne(e => e.Submission)
+            .WithOne(s => s.Submitter);*/
 
         base.OnModelCreating(builder);
     }

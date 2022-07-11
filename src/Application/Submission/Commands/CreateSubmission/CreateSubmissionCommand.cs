@@ -3,7 +3,7 @@ using OpenExam.Application.Common.Interfaces;
 using OpenExam.Domain.Entities;
 using OpenExam.Domain.Events;
 
-namespace OpenExam.Application.Users.Commands.CreateUser;
+namespace OpenExam.Application.Submission.Commands.CreateSubmission;
 
 public record CreateSubmissionCommand : IRequest<int>
 {

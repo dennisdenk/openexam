@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
+using OpenExam.Application.UserAccount.Commands.CreateUser;
 
-namespace OpenExam.Application.Users.Commands.CreateUser;
+namespace OpenExam.Application.Submission.Commands.CreateSubmission;
 
 public class CreateSubmissionCommandValidator : AbstractValidator<CreateTodoItemCommand>
 {

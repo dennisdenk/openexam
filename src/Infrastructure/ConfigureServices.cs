@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Npgsql;
 using OpenExam.Application.Common.Interfaces;
 using OpenExam.Infrastructure.Files;
 using OpenExam.Infrastructure.Identity;
@@ -27,7 +28,12 @@ public static class ConfigureServices
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"),
-                    builder => builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+                    builder =>
+                    {
+                        builder.UseNodaTime();
+                        builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName);
+                    }));
+            NpgsqlConnection.GlobalTypeMapper.UseNodaTime();
             // options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
             // builder => builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
         }

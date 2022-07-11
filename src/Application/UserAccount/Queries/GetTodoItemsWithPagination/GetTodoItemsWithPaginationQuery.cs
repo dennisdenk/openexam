@@ -5,7 +5,7 @@ using OpenExam.Application.Common.Interfaces;
 using OpenExam.Application.Common.Mappings;
 using OpenExam.Application.Common.Models;
 
-namespace OpenExam.Application.Users.Queries.GetTodoItemsWithPagination;
+namespace OpenExam.Application.UserAccount.Queries.GetTodoItemsWithPagination;
 
 public record GetTodoItemsWithPaginationQuery : IRequest<PaginatedList<TodoItemBriefDto>>
 {

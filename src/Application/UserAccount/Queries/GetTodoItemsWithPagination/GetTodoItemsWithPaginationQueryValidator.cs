@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace OpenExam.Application.Users.Queries.GetTodoItemsWithPagination;
+namespace OpenExam.Application.UserAccount.Queries.GetTodoItemsWithPagination;
 
 public class GetTodoItemsWithPaginationQueryValidator : AbstractValidator<GetTodoItemsWithPaginationQuery>
 {

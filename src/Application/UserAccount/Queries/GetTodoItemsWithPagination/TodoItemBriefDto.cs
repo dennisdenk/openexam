@@ -1,8 +1,9 @@
 ﻿using OpenExam.Application.Common.Mappings;
+using OpenExam.Domain.Entities;
 
-namespace OpenExam.Application.Submission.Queries.GetSubmissionsByExamWithPaginationQuery;
+namespace OpenExam.Application.UserAccount.Queries.GetTodoItemsWithPagination;
 
-public class SubmissionDto : IMapFrom<Domain.Entities.Submission>
+public class TodoItemBriefDto : IMapFrom<TodoItem>
 {
     public int Id { get; set; }
 

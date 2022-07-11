@@ -4,8 +4,9 @@ using MediatR;
 using OpenExam.Application.Common.Interfaces;
 using OpenExam.Application.Common.Mappings;
 using OpenExam.Application.Common.Models;
+using OpenExam.Application.UserAccount.Queries.GetTodoItemsWithPagination;
 
-namespace OpenExam.Application.Users.Queries.GetTodoItemsWithPagination;
+namespace OpenExam.Application.Submission.Queries.GetSubmissionsByExamWithPaginationQuery;
 
 public record GetSubmissionsByExamWithPaginationQuery : IRequest<PaginatedList<TodoItemBriefDto>>
 {

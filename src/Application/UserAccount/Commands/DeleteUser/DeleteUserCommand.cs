@@ -4,20 +4,20 @@ using OpenExam.Application.Common.Interfaces;
 using OpenExam.Domain.Entities;
 using OpenExam.Domain.Events;
 
-namespace OpenExam.Application.Submission.Commands.DeleteSubmission;
+namespace OpenExam.Application.UserAccount.Commands.DeleteUser;
 
-public record DeleteSubmissionCommand(int Id) : IRequest;
+public record DeleteTodoItemCommand(int Id) : IRequest;
 
-public class DeleteSubmissionCommandHandler : IRequestHandler<DeleteSubmissionCommand>
+public class DeleteTodoItemCommandHandler : IRequestHandler<DeleteTodoItemCommand>
 {
     private readonly IApplicationDbContext _context;
 
-    public DeleteSubmissionCommandHandler(IApplicationDbContext context)
+    public DeleteTodoItemCommandHandler(IApplicationDbContext context)
     {
         _context = context;
     }
 
-    public async Task<Unit> Handle(DeleteSubmissionCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(DeleteTodoItemCommand request, CancellationToken cancellationToken)
     {
         var entity = await _context.TodoItems
             .FindAsync(new object[] { request.Id }, cancellationToken);

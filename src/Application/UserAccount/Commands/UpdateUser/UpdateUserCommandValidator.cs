@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace OpenExam.Application.Users.Commands.UpdateUser;
+namespace OpenExam.Application.UserAccount.Commands.UpdateUser;
 
 public class UpdateTodoItemCommandValidator : AbstractValidator<UpdateTodoItemCommand>
 {
