@@ -10,7 +10,6 @@ public class Submission : BaseAuditableEntity
 {
     [Key]
     public Guid SubmissionId { get; set; }
-
     
     public Examinee? Submitter { get; set; }
     

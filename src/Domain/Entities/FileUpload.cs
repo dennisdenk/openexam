@@ -1,4 +1,5 @@
-﻿using NodaTime;
+﻿using System.ComponentModel.DataAnnotations;
+using NodaTime;
 using OpenExam.Domain.Common;
 using OpenExam.Domain.Enums;
 using OpenExam.Domain.Events;
@@ -7,6 +8,7 @@ namespace OpenExam.Domain.Entities;
 
 public class FileUpload : BaseAuditableEntity
 {
+    [Key]
     public Guid FileId { get; set; }
     
     public string? FileName { get; set; }

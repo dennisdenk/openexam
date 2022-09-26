@@ -27,3 +27,9 @@ Das docker-compose Skript erstellt alles Nötige um OpenExam zu nutzen
 Aus dem Root-Verzeichnis:
 
  `dotnet ef migrations add "SampleMigration" --project src\Infrastructure --startup-project src\WebUI --output-dir Persistence\Migrations`
+
+
+## Probleme
+
+* Datums/Zeitangaben wie immer nicht trivial. Konvertierung zwischen Nodatime und den Eingaben/Ausgaben für die App nötig.
+	- Erlaubte Zeit/Datumsangaben sind zb.:  `1995-12-17T03:24:00`,  `2020-05-12T23:50:21.817Z`

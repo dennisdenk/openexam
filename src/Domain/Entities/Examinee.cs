@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using NodaTime;
 using OpenExam.Domain.Common;
 using OpenExam.Domain.Enums;
@@ -8,6 +9,7 @@ namespace OpenExam.Domain.Entities;
 
 public class Examinee : BaseAuditableEntity
 {
+    [Key]
     public Guid ExamineeId { get; set; }
     
     public ExamineeType ExamineeType { get; set; }

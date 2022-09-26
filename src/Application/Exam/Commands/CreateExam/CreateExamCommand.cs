@@ -1,7 +1,9 @@
-﻿using MediatR;
+﻿using System.ComponentModel;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using NodaTime;
 using OpenExam.Application.Common.Interfaces;
+using DateTimeConverter = OpenExam.Application.Common.DateTimeConverter;
 
 namespace OpenExam.Application.Exam.Commands.CreateExam;
 
@@ -11,11 +13,11 @@ public record CreateExamCommand : IRequest<Domain.Entities.Exam>
     
     public string ExamFilePath { get; set; }
     
-    public LocalDateTime StartTime { get; set; }
+    public DateTime StartTime { get; set; }
     
-    public LocalDateTime EndTime { get; set; }
+    public DateTime EndTime { get; set; }
     
-    public LocalDateTime LatestSubmissionTime { get; set; }
+    public DateTime LatestSubmissionTime { get; set; }
     
     public string? Description { get; set; }
 }
@@ -35,9 +37,9 @@ public class CreateExamCommandHandler : IRequestHandler<CreateExamCommand, Domai
         {
             FileName = request.ExamFilePath,
             Title = request.Title,
-            StartTime = request.StartTime,
-            EndTime = request.EndTime,
-            LatestSubmissionTime = request.LatestSubmissionTime,
+            StartTime = DateTimeConverter.ConvertFromDateTimeToLocalDateTime(request.StartTime),
+            EndTime = DateTimeConverter.ConvertFromDateTimeToLocalDateTime(request.EndTime),
+            LatestSubmissionTime = DateTimeConverter.ConvertFromDateTimeToLocalDateTime(request.LatestSubmissionTime),
             Description = request.Description
         };
 

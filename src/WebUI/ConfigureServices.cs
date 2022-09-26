@@ -43,8 +43,8 @@ public static class ConfigureServices
             {
                 Version = "v1",
                 Title = "OpenExam API",
-                Description = "An ASP.NET Core Web API for managing ToDo items",
-                TermsOfService = new Uri("https://example.com/terms"),
+                Description = "Prüfungsmanagement und Durchführung",
+                /* TermsOfService = new Uri("https://example.com/terms"),
                 Contact = new OpenApiContact
                 {
                     Name = "Example Contact",
@@ -54,7 +54,7 @@ public static class ConfigureServices
                 {
                     Name = "Example License",
                     Url = new Uri("https://example.com/license")
-                }
+                }*/
             });
         });
 

@@ -19,11 +19,24 @@ public class BlobStorageContext: IBlobStorageContext
         
         BlobStorageConfiguration config = configuration.GetSection("BlobStorageConfiguration")
             .Get<BlobStorageConfiguration>();
-
-        minioClient = new MinioClient(config.Endpoint,
-            config.AccessKey,
-            config.SecretKey
-        );  //.WithSSL();
+        try
+        {
+            /*minioClient = new MinioClient(config.Endpoint,
+                config.AccessKey,
+                config.SecretKey
+            );*/ //.WithSSL();
+            minioClient = new MinioClient()
+                .WithEndpoint(config.Endpoint)
+                .WithCredentials(config.AccessKey,
+                    config.SecretKey)
+                // .WithSSL()
+                .Build();
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e.Message);
+        } 
+        
     }
     
     public async Task AddDocument(string bucketName, string fileName, Stream fileStream)

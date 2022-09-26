@@ -1,12 +1,10 @@
-﻿using NodaTime;
-using OpenExam.Domain.Common;
-using OpenExam.Domain.Enums;
-using OpenExam.Domain.Events;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace OpenExam.Domain.Entities;
 
 public class UserRole : BaseAuditableEntity
 {
+    [Key]
     public Guid RoleId { get; set; }
     
     public string? RoleName { get; set; }
