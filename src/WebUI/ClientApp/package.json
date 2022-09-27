@@ -12,8 +12,11 @@
   },
   "dependencies": {
     "@heroicons/vue": "^2.0.11",
+    "@jobinsjp/vue3-datatable": "^1.0.15",
+    "@js-joda/core": "^5.4.0",
     "@nuxtjs/tailwindcss": "^5.3.3",
     "@pinia/nuxt": "^0.4.2",
+    "axios": "^0.27.2",
     "pinia": "^2.0.22"
   }
 }

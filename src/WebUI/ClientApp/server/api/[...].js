@@ -1,1 +1,1 @@
-export default req => $fetch(`https://b146-2003-ef-bf0e-b600-5055-92b6-2a8f-3057.eu.ngrok.io${req.url}`)
+export default req => $fetch(`https://1ec2-2003-ef-bf10-7d00-ec6f-1641-736-8b50.eu.ngrok.io${req.url}`)

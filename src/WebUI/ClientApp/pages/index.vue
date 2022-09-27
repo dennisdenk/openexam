@@ -37,7 +37,7 @@
             <div class="lg:text-center">
                 <h2 class="text-lg font-semibold text-indigo-600">Transactions</h2>
                 <p class="mt-2 text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">A better way to send money</p>
-                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in accusamus quisquam.</p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto"> {{data}} Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in accusamus quisquam.</p>
             </div>
 
             <div class="mt-10">

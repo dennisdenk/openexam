@@ -24,7 +24,12 @@ const getters = {
     }
 };
 
-const actions = {};
+const actions = {
+    remove(id: string){
+        this.items = this.items.filter(exam => exam.id !== id) ;
+    }
+
+};
 
 export const useExamStore = defineStore('examStore', {
     state,
