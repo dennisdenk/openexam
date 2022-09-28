@@ -17,6 +17,7 @@
     "@nuxtjs/tailwindcss": "^5.3.3",
     "@pinia/nuxt": "^0.4.2",
     "axios": "^0.27.2",
+    "flowbite": "^1.5.3",
     "pinia": "^2.0.22"
   }
 }
