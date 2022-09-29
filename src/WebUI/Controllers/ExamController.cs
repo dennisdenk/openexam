@@ -18,6 +18,19 @@ public class ExamController : ApiControllerBase
         return await Mediator.Send(new GetExamsQuery());
     }
     
+    [HttpGet("ById/{id}")]
+    public async Task<ActionResult<Exam>> ById([FromQuery] GetExamByIdQuery query)
+    {
+        return await Mediator.Send(query);
+    }
+    
+    [Authorize]
+    [HttpGet("myexams")]
+    public async Task<ActionResult<List<Exam>>> MyExams()
+    {
+        return await Mediator.Send(new GetExamsQuery());
+    }
+    
     [HttpPost]
     public async Task<Exam> CreateExam([FromQuery] CreateExamCommand query)
     {

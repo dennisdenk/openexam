@@ -2,6 +2,7 @@ using OpenExam.Application;
 using OpenExam.Infrastructure;
 using OpenExam.Infrastructure.Persistence;
 using OpenExam.WebUI;
+using OpenExam.WebUI.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +36,16 @@ else
 app.UseHealthChecks("/health");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseCors(builder =>
+{
+    builder.WithOrigins("http://localhost:3000")
+        .AllowAnyHeader()
+        .WithMethods("GET", "POST");
+    // .AllowCredentials();
+});
+
+app.MapHub<SubmissionHub>("/api/submissionHub");
 
 /* app.UseSwaggerUi3(settings =>
 {

@@ -18,6 +18,13 @@ public class SubmissionController : ApiControllerBase
     {
         return await Mediator.Send(query);
     }
+    
+    /* [Authorize]
+    [HttpGet("mysubmissions")]
+    public async Task<ActionResult<List<Submission>>> GetMySubmissions()
+    {
+        return await Mediator.Send(query);
+    } */
 
     /*[HttpPost]
     public async Task<ActionResult<int>> Create(CreateTodoListCommand command)

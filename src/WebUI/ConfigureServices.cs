@@ -30,6 +30,7 @@ public static class ConfigureServices
                 .AddFluentValidation(x => x.AutomaticValidationEnabled = false);
 
         services.AddRazorPages();
+        services.AddSignalR();
 
         // Customise default API behaviour
         services.Configure<ApiBehaviorOptions>(options =>
