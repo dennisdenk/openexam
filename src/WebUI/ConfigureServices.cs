@@ -59,62 +59,6 @@ public static class ConfigureServices
             });
         });
 
-        services.AddAuthentication(options =>
-            {
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer()
-            .AddOpenIdConnect(options =>
-            {
-                // options.Authority = Configuration["Oidc:Authority"]; configuration
-                options.Authority = configuration.GetSection("Identity").GetSection("Authority").Value;
-                options.ClientId = configuration.GetSection("Identity").GetSection("ClientId").Value;
-                options.ClientSecret = configuration.GetSection("Identity").GetSection("ClientSecret").Value;
-                options.SaveTokens = true;
-                // TODO: Schauen was da am meisten Sinn ergibt
-                options.ResponseType = OpenIdConnectResponseType.Code; //Configuration["Oidc:ResponseType"];
-                options.RequireHttpsMetadata = false; // dev only
-                options.GetClaimsFromUserInfoEndpoint = true;
-                options.Scope.Add("openid");
-                options.Scope.Add("profile");
-                options.Scope.Add("email");
-                options.Scope.Add("claims");
-                options.SaveTokens = true;
-                //options.Events = new OpenIdConnectEvents
-                //{
-                //    OnTokenResponseReceived = async ctx =>
-                //    {
-                //        var a = ctx.Principal;
-                //    },
-                //    OnAuthorizationCodeReceived = async ctx =>
-                //    {
-                //        var a = ctx.Principal;
-                //    }
-                //};
-
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    NameClaimType = "name", RoleClaimType = "groups", ValidateIssuer = true
-                };
-            });
-
-        /* services.AddOpenApiDocument(configure =>
-        {
-            configure.Title = "OpenExam API";
-            configure.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
-            {
-                Type = OpenApiSecuritySchemeType.ApiKey,
-                Name = "Authorization",
-                In = OpenApiSecurityApiKeyLocation.Header,
-                Description = "Type into the textbox: Bearer {your JWT token}."
-            });
-
-            configure.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT"));
-        }); */
-        
-        services.AddAuthorization();
-
         return services;
     }
 }

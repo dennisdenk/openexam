@@ -37,6 +37,7 @@ app.UseHealthChecks("/health");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+// At least neaded for Hub
 app.UseCors(builder =>
 {
     builder.WithOrigins("http://localhost:3000")
@@ -68,7 +69,6 @@ if (app.Environment.IsDevelopment())
 app.UseRouting();
 
 app.UseAuthentication();
-// app.UseIdentityServer();
 app.UseAuthorization();
 
 app.MapControllerRoute(
