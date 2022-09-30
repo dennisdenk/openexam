@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using OpenExam.Application.Common.Interfaces;
 using OpenExam.Application.Common.Models;
 
@@ -11,22 +12,27 @@ public class IdentityService : IIdentityService
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly IUserClaimsPrincipalFactory<ApplicationUser> _userClaimsPrincipalFactory;
     private readonly IAuthorizationService _authorizationService;
+    private readonly ILogger _logger;
 
     public IdentityService(
         UserManager<ApplicationUser> userManager,
+        ILogger<IdentityService> logger,
         IUserClaimsPrincipalFactory<ApplicationUser> userClaimsPrincipalFactory,
         IAuthorizationService authorizationService)
     {
         _userManager = userManager;
         _userClaimsPrincipalFactory = userClaimsPrincipalFactory;
         _authorizationService = authorizationService;
+        _logger = logger;
     }
 
     public async Task<string> GetUserNameAsync(string userId)
     {
-        var user = await _userManager.Users.FirstAsync(u => u.Id == userId);
-
-        return user.UserName;
+        _logger.LogInformation("UserId: " + userId + " logged in");
+        // TODO: Sinnvoll umsetzen
+        // var user = await _userManager.Users.FirstAsync(u => u.Id == userId);
+        return "Max Mustermann";
+        // return user.UserName;
     }
 
     public async Task<(Result Result, string UserId)> CreateUserAsync(string userName, string password)

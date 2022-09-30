@@ -35,7 +35,7 @@
     const data = ref([]);
     var data2 = ref([]);
     data.value = await useFetch('/api/Exam')
-    const { $http, $datecreate } = useNuxtApp();
+    const { $http, $datecreate, $keycloak } = useNuxtApp();
 
     onMounted(() => {
         console.log(data)
@@ -56,6 +56,9 @@
             }) 
         })
         console.log(data2.value)
+
+        console.log("Token keycloak")
+        console.log($keycloak.tokenParsed)
     })
 
     components: {

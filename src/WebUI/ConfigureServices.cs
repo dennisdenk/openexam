@@ -57,6 +57,39 @@ public static class ConfigureServices
                     Url = new Uri("https://example.com/license")
                 }*/
             });
+            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Name = "Authorization",
+                Scheme = "Bearer",
+                BearerFormat = "JWT",
+                Type = SecuritySchemeType.ApiKey,
+                In = ParameterLocation.Header,
+            });
+            
+            options.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        },
+                        Scheme = "oauth2",
+                        Name = "Bearer",
+                        In = ParameterLocation.Header,
+                    },
+                    Array.Empty<string>()
+                }
+            });
+            
+            /* options.AddSecurityDefinition("OpenId" ,new OpenIdConnectConfiguration
+            {
+                AuthorizationEndpoint = "localhost:8080/auth",
+                TokenEndpoint = "localhost:8080/auth/realms/master/protocol/openid-connect/token",
+                EndSessionEndpoint = "localhost:8080/auth/realms/master/protocol/openid-connect/logout"
+            }; */
         });
 
         return services;

@@ -4,6 +4,7 @@
             <NuxtLink class="" to="/">Home</NuxtLink>
             <NuxtLink class="col-2" to="/exam/exams">Prüfungen</NuxtLink>
             <NuxtLink class="col-2" to="/exam/submission/my-submissions">Einreichungen</NuxtLink>
+            <NuxtLink class="col-2" to="/logout">Logout</NuxtLink>
         </nav>
         <main class="px-10">
             <slot />

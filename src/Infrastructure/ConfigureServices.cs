@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using Keycloak.AuthServices.Authentication;
+using Keycloak.AuthServices.Authorization;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -47,8 +49,8 @@ public static class ConfigureServices
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
 
-        services.AddIdentityServer()
-            .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+        // services.AddIdentityServer()
+        //    .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
 
         services.AddTransient<IDateTime, DateTimeService>();
         services.AddTransient<IIdentityService, IdentityService>();
@@ -56,11 +58,35 @@ public static class ConfigureServices
         
         services.AddScoped<IBlobStorageContext, BlobStorageContext>();
 
-        services.AddAuthentication()
+        /* services.AddAuthentication()
             .AddIdentityServerJwt();
 
         services.AddAuthorization(options =>
-            options.AddPolicy("CanPurge", policy => policy.RequireRole("Administrator")));
+            options.AddPolicy("CanPurge", policy => policy.RequireRole("Administrator"))); */
+        
+        // Authentication and Authorization stuff
+        // TODO: Nach erfolgreichem Einbau auf Configuration-Datei ändern
+        var authenticationOptions = new KeycloakAuthenticationOptions
+        {
+            AuthServerUrl = "https://login.sysadapt.com/auth",
+            
+            Realm = "openExam",
+            Resource = "testclient2",
+            VerifyTokenAudience = false,
+            // Credentials = { Secret = "3h0EhED2UOgQzN6YUCLuynL4yedIglkj" },
+            SslRequired = "external",
+            
+        };
+
+        services.AddKeycloakAuthentication(authenticationOptions);
+        services.AddAuthorization(o => o.AddPolicy("IsAdmin", b =>
+        {
+            b.RequireRealmRoles("admin");
+            b.RequireResourceRoles("r-admin"); // stands for "resource admin"
+            // resource roles are mapped to ASP.NET Core Identity roles
+            b.RequireRole("r-admin"); 
+        }));
+        services.AddKeycloakAuthorization(configuration);
 
         return services;
     }

@@ -3,6 +3,7 @@ using OpenExam.Infrastructure;
 using OpenExam.Infrastructure.Persistence;
 using OpenExam.WebUI;
 using OpenExam.WebUI.Controllers;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 var builder = WebApplication.CreateBuilder(args);
 
