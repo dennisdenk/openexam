@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using NodaTime;
+using OpenExam.Application.Submission;
 using OpenExam.Domain.Common;
 using OpenExam.Domain.Enums;
 using OpenExam.Domain.Events;
@@ -13,6 +14,8 @@ public class Submission : BaseAuditableEntity
     
     public Examinee? Submitter { get; set; }
     
+    public SubmitterType SubmitterType { get; set; }
+
     // public Guid? ExamineeId { get; set; }
     public ICollection<UserAccount>? Correctors { get; set; }
     
@@ -29,6 +32,8 @@ public class Submission : BaseAuditableEntity
     public Exam? Exam { get; set; }
 
     public LocalDateTime SubmittedAt { get; set; }
+    
+    public string? Password { get; set; }
 
     // private bool _done;
     /*public bool Done

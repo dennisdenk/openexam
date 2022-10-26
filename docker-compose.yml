@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  proxy:
+    image: "nginx"
+    ports:
+      - "80:80"
+      - "443:443"
+  # Frontend nur nötig wenn ohne proxy
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "asdf1234"
+      POSTGRES_USER: "postgres"
+      POSTGRES_DB: "openexam"
+  minio:
+    image: "minio/minio"
+    volumes:
+      - "./minio_data:/data"
+    environment:
+      - "MINIO_ROOT_USER=ROOT"
+      - "MINIO_ROOT_PASSWORD=Aasdf123!"
+  frontend:
+    build: ./src/WebUI/ClientApp
+  backend:
+    build: .
+    depends_on:
+      - db
+      - minio
+  

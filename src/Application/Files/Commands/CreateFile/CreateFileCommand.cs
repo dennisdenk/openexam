@@ -5,10 +5,11 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.WebUtilities;
 using OpenExam.Application.Common.Interfaces;
+using OpenExam.Domain.Entities;
 
 namespace OpenExam.Application.Files.Commands.CreateFile;
 
-public record CreateFileCommand : IRequest<string>
+public record CreateFileCommand : IRequest<FileUpload>
 {
     public string? FileName { get; set; }
     
@@ -23,7 +24,7 @@ public record CreateFileCommand : IRequest<string>
     public string? Comment { get; set; }
 }
 
-public class CreateFileCommandHandler : IRequestHandler<CreateFileCommand, string>
+public class CreateFileCommandHandler : IRequestHandler<CreateFileCommand, FileUpload>
 {
     private readonly IApplicationDbContext _context;
     private readonly IBlobStorageContext _blob;
@@ -41,7 +42,7 @@ public class CreateFileCommandHandler : IRequestHandler<CreateFileCommand, strin
             return true;
     }
 
-    public async Task<string> Handle(CreateFileCommand request, CancellationToken cancellationToken)
+    public async Task<FileUpload> Handle(CreateFileCommand request, CancellationToken cancellationToken)
     {
         var checksum = "";
 
@@ -92,9 +93,6 @@ public class CreateFileCommandHandler : IRequestHandler<CreateFileCommand, strin
 
         entity.Checksum = checksum;
 
-
-
-
         // var examFile = await _context.FileUploads.FirstOrDefaultAsync(fu => fu.FilePath.Equals(request.ExamFilePath), cancellationToken: cancellationToken);
 
         // entity.ExamFile = examFile;
@@ -105,6 +103,6 @@ public class CreateFileCommandHandler : IRequestHandler<CreateFileCommand, strin
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return entity.Checksum;
+        return entity;
     }
 }

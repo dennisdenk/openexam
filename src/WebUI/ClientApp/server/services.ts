@@ -14,14 +14,18 @@ import {
   PostExamQueryParams,
   PutExamQueryParams,
   DeleteExamQueryParams,
+  GetExamByIdQueryParams,
   PostFileQueryParams,
   PostFileUploadFileStreamQueryParams,
   GetSubmissionQueryParams,
+  PostSubmissionVerifySubmissionQueryParams,
   GetTodoItemsQueryParams,
   PutTodoItemsUpdateItemDetailsQueryParams,
+  BulkCreateSubmissionCommand,
   CreateTodoItemCommand,
   CreateTodoListCommand,
   Exam,
+  ExamReturnDto,
   Submission,
   TodoItemBriefDtoPaginatedList,
   TodosVm,
@@ -138,6 +142,37 @@ export const getExam = (
 
 /** Key is end point string without base url */
 getExam.key = "/api/Exam";
+
+export const getExamById = (
+  queryParams?: GetExamByIdQueryParams,
+  configOverride?: AxiosRequestConfig
+): Promise<SwaggerResponse<ExamReturnDto>> => {
+  return Http.getRequest(
+    getExamById.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride)
+  );
+};
+
+/** Key is end point string without base url */
+getExamById.key = "/api/Exam/ById";
+
+export const getExamMyexams = (
+  configOverride?: AxiosRequestConfig
+): Promise<SwaggerResponse<Exam[]>> => {
+  return Http.getRequest(
+    getExamMyexams.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride)
+  );
+};
+
+/** Key is end point string without base url */
+getExamMyexams.key = "/api/Exam/myexams";
 
 export const getSubmission = (
   queryParams?: GetSubmissionQueryParams,
@@ -287,6 +322,39 @@ export const postFileUploadFileStream = (
 
 /** Key is end point string without base url */
 postFileUploadFileStream.key = "/api/File/UploadFileStream";
+
+export const postSubmissionBulkCreateSubmissions = (
+  requestBody: BulkCreateSubmissionCommand,
+  configOverride?: AxiosRequestConfig
+): Promise<SwaggerResponse<Submission[]>> => {
+  return Http.postRequest(
+    postSubmissionBulkCreateSubmissions.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride)
+  );
+};
+
+/** Key is end point string without base url */
+postSubmissionBulkCreateSubmissions.key =
+  "/api/Submission/BulkCreateSubmissions";
+
+export const postSubmissionVerifySubmission = (
+  queryParams?: PostSubmissionVerifySubmissionQueryParams,
+  configOverride?: AxiosRequestConfig
+): Promise<SwaggerResponse<boolean>> => {
+  return Http.postRequest(
+    postSubmissionVerifySubmission.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride)
+  );
+};
+
+/** Key is end point string without base url */
+postSubmissionVerifySubmission.key = "/api/Submission/VerifySubmission";
 
 export const postTodoItems = (
   requestBody: CreateTodoItemCommand,

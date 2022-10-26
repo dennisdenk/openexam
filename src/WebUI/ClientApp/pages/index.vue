@@ -10,19 +10,19 @@
             icon: GlobeAltIcon,
         },
         {
-            name: 'No hidden fees',
+            name: 'Faire, anonyme Korrektur und Prüfungsdurchführung',
             description:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
             icon: ScaleIcon,
         },
         {
-            name: 'Transfers are instant',
+            name: 'Schnelle Einrichtung, Durchführung und Verwaltung',
             description:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
             icon: BoltIcon,
         },
         {
-            name: 'Mobile notifications',
+            name: 'Chatfunktion und Beschwerdemanagement',
             description:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
             icon: ChatBubbleBottomCenterTextIcon,
@@ -35,8 +35,8 @@
         <div class="bg-white py-12">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="lg:text-center">
-                <h2 class="text-lg font-semibold text-indigo-600">Transactions</h2>
-                <p class="mt-2 text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">A better way to send money</p>
+                <h2 class="text-lg font-semibold text-indigo-600">Prüfungsdurchführung- und Verwaltung</h2>
+                <p class="mt-2 text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">OpenExam</p>
                 <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto"> {{data}} Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in accusamus quisquam.</p>
             </div>
 

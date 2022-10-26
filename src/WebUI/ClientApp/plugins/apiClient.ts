@@ -4,7 +4,7 @@ export default defineNuxtPlugin(nuxtApp => {
 
     // Add $myInjectedFunction(context) in Vue, context and nuxtApp
     const apiClient = axios.create({
-        baseURL: "https://1ec2-2003-ef-bf10-7d00-ec6f-1641-736-8b50.eu.ngrok.io",
+        baseURL: "https://1bb9-2003-ef-bf10-7d00-7c45-3087-f252-8c57.eu.ngrok.io",
         withCredentials: false,
         headers: {
             Accept: "application/json",

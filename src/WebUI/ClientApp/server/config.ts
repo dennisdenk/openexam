@@ -51,7 +51,7 @@ function getAxiosInstance(security: Security): AxiosInstance {
         if (error.response) {
           return Promise.reject(
             new RequestError(
-              error.response.data? "" + error.response.data : "Error",
+              error.response.data ? "" + error.response.data : "Error",
               error.response.status,
               error.response
             )

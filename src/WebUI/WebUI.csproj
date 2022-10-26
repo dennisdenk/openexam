@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <RootNamespace>CleanArchitecture.WebUI</RootNamespace>
-        <AssemblyName>CleanArchitecture.WebUI</AssemblyName>
+        <RootNamespace>OpenExam.WebUI</RootNamespace>
+        <AssemblyName>OpenExam.WebUI</AssemblyName>
         <Nullable>enable</Nullable>
         <IsPackable>true</IsPackable>
         <SpaRoot>ClientApp\</SpaRoot>
@@ -18,7 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <InternalsVisibleTo Include="CleanArchitecture.Application.IntegrationTests" />
+        <InternalsVisibleTo Include="OpenExam.Application.IntegrationTests" />
     </ItemGroup>
     
     <ItemGroup>

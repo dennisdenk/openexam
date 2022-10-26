@@ -6,6 +6,12 @@
 
 export type BaseEvent = { [x in string | number]: any };
 
+export interface BulkCreateSubmissionCommand {
+  submitterType: "User" | "Email" | "Code" | "Anonymous";
+  examId?: string;
+  submissions?: SubmissionBulkCreateDto[];
+}
+
 export interface CalendarSystem {
   /**
    *
@@ -79,6 +85,24 @@ export interface Exam {
   title?: string;
 }
 
+export interface ExamReturnDto {
+  endTime: LocalDateTime;
+  examFile: FileUpload;
+  /**
+   *
+   * - Format: uuid
+   */
+  examId: string;
+  latestSubmissionTime: LocalDateTime;
+  startTime: LocalDateTime;
+  description?: string;
+  examinees?: Examinee[];
+  examiner?: UserAccount[];
+  fileName?: string;
+  submissions?: SubmissionReturnDto[];
+  title?: string;
+}
+
 export interface Examinee {
   /**
    *
@@ -91,7 +115,7 @@ export interface Examinee {
    * - Format: uuid
    */
   examineeId: string;
-  examineeType: ExamineeType;
+  examineeType: "User" | "Offline" | "Mail" | "Code";
   /**
    *
    * - Format: int32
@@ -109,18 +133,6 @@ export interface Examinee {
   lastModified?: string;
   lastModifiedBy?: string;
   submissions?: Submission[];
-}
-
-/**
- *
- * - Format: int32
- */
-
-export enum ExamineeType {
-  0 = 0,
-  1 = 1,
-  2 = 2,
-  3 = 3,
 }
 
 export interface FileUpload {
@@ -156,6 +168,10 @@ export interface FileUpload {
   uploadedBy?: string;
 }
 
+export interface GetExamByIdQueryParams {
+  ExamId?: string;
+}
+
 export interface GetSubmissionQueryParams {
   ExamId?: string;
 }
@@ -180,22 +196,6 @@ export interface GetTodoItemsQueryParams {
 
 export type IntPtr = { [x in string | number]: any };
 
-/**
- *
- * - Format: int32
- */
-
-export enum IsoDayOfWeek {
-  0 = 0,
-  1 = 1,
-  2 = 2,
-  3 = 3,
-  4 = 4,
-  5 = 5,
-  6 = 6,
-  7 = 7,
-}
-
 export interface LocalDate {
   calendar: CalendarSystem;
   /**
@@ -203,7 +203,15 @@ export interface LocalDate {
    * - Format: int32
    */
   day: number;
-  dayOfWeek: IsoDayOfWeek;
+  dayOfWeek:
+    | "None"
+    | "Monday"
+    | "Tuesday"
+    | "Wednesday"
+    | "Thursday"
+    | "Friday"
+    | "Saturday"
+    | "Sunday";
   /**
    *
    * - Format: int32
@@ -240,7 +248,15 @@ export interface LocalDateTime {
    * - Format: int32
    */
   day: number;
-  dayOfWeek: IsoDayOfWeek;
+  dayOfWeek:
+    | "None"
+    | "Monday"
+    | "Tuesday"
+    | "Wednesday"
+    | "Thursday"
+    | "Friday"
+    | "Saturday"
+    | "Sunday";
   /**
    *
    * - Format: int32
@@ -471,16 +487,13 @@ export interface PostFileUploadFileStreamQueryParams {
   "Section.Headers"?: { [x: string]: string[] };
 }
 
-/**
- *
- * - Format: int32
- */
-
-export enum PriorityLevel {
-  0 = 0,
-  1 = 1,
-  2 = 2,
-  3 = 3,
+export interface PostSubmissionVerifySubmissionQueryParams {
+  Password?: string;
+  /**
+   *
+   * - Format: uuid
+   */
+  SubmissionId?: string;
 }
 
 export interface PriorityLevelDto {
@@ -536,6 +549,7 @@ export interface Submission {
   submissionId: string;
   submittedAt: LocalDateTime;
   submitter: Examinee;
+  submitterType: "User" | "Email" | "Code" | "Anonymous";
   correctorComment?: string;
   correctors?: UserAccount[];
   createdBy?: string;
@@ -547,6 +561,34 @@ export interface Submission {
   lastModified?: string;
   lastModifiedBy?: string;
   note?: string;
+  password?: string;
+}
+
+export interface SubmissionBulkCreateDto {
+  submitterType: "User" | "Email" | "Code" | "Anonymous";
+  password?: string;
+}
+
+export interface SubmissionReturnDto {
+  file: FileUpload;
+  /**
+   *
+   * - Format: double
+   */
+  grade: number;
+  graded: boolean;
+  /**
+   *
+   * - Format: uuid
+   */
+  submissionId: string;
+  submittedAt: LocalDateTime;
+  submitterType: "User" | "Email" | "Code" | "Anonymous";
+  correctorComment?: string;
+  correctors?: UserAccount[];
+  examineeId?: string;
+  note?: string;
+  password?: string;
 }
 
 export interface TodoItemBriefDto {
@@ -645,7 +687,7 @@ export interface UpdateTodoItemDetailCommand {
    * - Format: int32
    */
   listId: number;
-  priority: PriorityLevel;
+  priority: "None" | "Low" | "Medium" | "High";
   note?: string;
 }
 

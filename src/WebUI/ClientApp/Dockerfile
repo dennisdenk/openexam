@@ -1,15 +1,18 @@
 # build stage
-FROM node:lts-alpine as build-stage
+FROM node:18.7-alpine as build-stage
 WORKDIR /app
 COPY package*.json ./
 RUN yarn
 COPY . .
 RUN yarn build
-# RUN node .output/server/index.mjs
+# CMD ["node", ".output/server/index.mjs"]
 
 
 # production stage
 # FROM nginx:stable-alpine as production-stage
+FROM node:18.7-alpine as production-stage
 # COPY --from=build-stage /app/.output/server /usr/share/nginx/html
-# EXPOSE 80
+COPY --from=build-stage /app/.output/server /app
+EXPOSE 3000
+CMD ["node", "/app/index.mjs"]
 # CMD ["nginx", "-g", "daemon off;"]

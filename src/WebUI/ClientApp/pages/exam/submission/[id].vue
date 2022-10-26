@@ -3,6 +3,8 @@
     import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
     const exam = await useFetch('/api/Exam')
 
+    const props = defineProps()
+
     const connected = ref(false);
     
     var connection = new HubConnectionBuilder()
@@ -102,7 +104,7 @@
 <template>
     <div>
         <h2>
-        Prüfung XYZ -- Ihre Abgabe
+        Prüfung XYZ -- Ihre Abgabe {{$route.params.id}}
         </h2>
         <div>
         {{connected}}

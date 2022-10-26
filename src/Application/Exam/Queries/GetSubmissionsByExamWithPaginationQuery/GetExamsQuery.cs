@@ -23,7 +23,7 @@ public class GetExamsQueryHandler : IRequestHandler<GetExamsQuery, List<Domain.E
 
     public async Task<List<Domain.Entities.Exam>> Handle(GetExamsQuery request, CancellationToken cancellationToken)
     {
-        var exams = await _context.Exams.ToListAsync(cancellationToken);
+        var exams = await _context.Exams.Include(ex => ex.ExamFile).ToListAsync(cancellationToken);
         return exams;
 
         /*return await _context.TodoItems

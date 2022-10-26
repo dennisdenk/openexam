@@ -11,10 +11,12 @@
                 <th>Prüfungsdatei</th>
             </tr>
             <tr v-for="exam in data2" :key="exam.examId">
-                <td>{{exam.title}}</td>
+                <td><NuxtLink class="" :to="exam.examId">{{exam.title}}</NuxtLink></td>
                 <td>{{exam.startTime}}</td>
                 <td>{{exam.endTime}}</td>
-                <td></td>
+                <!-- <td>{{exam.examFile}}</td> -->
+                <td><a v-if="exam.examFile != null" @click="getFile(exam.examFile.fileName)">Download</a>
+                    <span></span></td>
             </tr>
         </table>
         <div class="ml-5 mt-5 mb-5">
@@ -50,16 +52,42 @@
             console.log(response)
 
             data2.value.map((exam) => {
-                console.log(exam.startTime)
-                exam.startTime = $datecreate(exam.startTime)
-                exam.endTime = $datecreate(exam.endTime)
+                console.log(exam.startTime);
+                exam.startTime = $datecreate(exam.startTime);
+                exam.endTime = $datecreate(exam.endTime);
             }) 
-        })
-        console.log(data2.value)
+        });
+        console.log(data2.value);
 
-        console.log("Token keycloak")
-        console.log($keycloak.tokenParsed)
+        console.log("Token keycloak");
+        console.log($keycloak.tokenParsed);
     })
+
+    /* function getFile() {
+        console.log("Get File")
+        $http.get('/api/Exam/GetFile').then((response) => {
+            console.log(response)
+        })
+    } */ 
+
+    function getFile(title) {
+        $http.get('/api/File/GetFileFromBucket?BucketName=general&FileName=' + title).then((response) => {
+            console.log(response)
+            this.forceFileDownload(response, title)
+        }).catch(e => {
+            console.log(e)
+        })
+    }
+
+    function forceFileDownload(response, title) {
+      // console.log(title)
+      const url = window.URL.createObjectURL(new Blob([response.data]))
+      const link = document.createElement('a')
+      link.href = url
+      link.setAttribute('download', title)
+      document.body.appendChild(link)
+      link.click()
+    }
 
     components: {
         DataTable

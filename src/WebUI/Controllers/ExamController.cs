@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using OpenExam.Application.Exam.Commands.CreateExam;
 using OpenExam.Application.Exam.Commands.DeleteExam;
 using OpenExam.Application.Exam.Commands.UpdateExam;
+using OpenExam.Application.Exam.DTOs;
 using OpenExam.Application.Exam.Queries.GetSubmissionsByExamWithPaginationQuery;
 using OpenExam.Domain.Entities;
 
@@ -18,8 +19,8 @@ public class ExamController : ApiControllerBase
         return await Mediator.Send(new GetExamsQuery());
     }
     
-    [HttpGet("ById/{id}")]
-    public async Task<ActionResult<Exam>> ById([FromQuery] GetExamByIdQuery query)
+    [HttpGet("ById")]
+    public async Task<ActionResult<ExamReturnDto>> ById([FromQuery] GetExamByIdQuery query)
     {
         return await Mediator.Send(query);
     }

@@ -72,6 +72,7 @@ public static class ConfigureServices
             
             Realm = "openExam",
             Resource = "testclient2",
+            // TODO: Wie kann das aktiviert bleiben?
             VerifyTokenAudience = false,
             // Credentials = { Secret = "3h0EhED2UOgQzN6YUCLuynL4yedIglkj" },
             SslRequired = "external",

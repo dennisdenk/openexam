@@ -1,4 +1,5 @@
-﻿using FluentValidation.AspNetCore;
+﻿using System.Text.Json.Serialization;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Mvc;
@@ -27,7 +28,9 @@ public static class ConfigureServices
 
         services.AddControllersWithViews(options =>
             options.Filters.Add<ApiExceptionFilterAttribute>())
-                .AddFluentValidation(x => x.AutomaticValidationEnabled = false);
+                .AddFluentValidation(x => x.AutomaticValidationEnabled = false)
+                .AddJsonOptions(
+                    opt => opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
         services.AddRazorPages();
         services.AddSignalR();
@@ -57,6 +60,7 @@ public static class ConfigureServices
                     Url = new Uri("https://example.com/license")
                 }*/
             });
+            options.UseInlineDefinitionsForEnums();
             options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
                 Name = "Authorization",

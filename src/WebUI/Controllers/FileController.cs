@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Net.Http.Headers;
 using OpenExam.Application.Common.Interfaces;
 using OpenExam.Application.Exam.Commands.CreateExam;
+using OpenExam.Application.Files.Commands;
 using OpenExam.Application.Files.Commands.CreateFile;
 using OpenExam.Application.TodoLists.Commands.CreateTodoList;
 using OpenExam.Application.TodoLists.Commands.DeleteTodoList;
@@ -17,11 +18,11 @@ namespace OpenExam.WebUI.Controllers;
 public class FileController : ApiControllerBase
 {
     
-    // private readonly IBlobStorageContext _blobStorageContext;
+    private readonly IBlobStorageContext _blobStorageContext;
     
-    public FileController()
+    public FileController(IBlobStorageContext blobStorageContext)
     {
-        
+        _blobStorageContext = blobStorageContext;
     }
 
     /*[HttpGet("{id}")]
@@ -30,6 +31,18 @@ public class FileController : ApiControllerBase
         var vm = await Mediator.Send(new ExportTodosQuery { ListId = id });
 
         return File(vm.Content, vm.ContentType, vm.FileName);
+    }*/ 
+    
+    /*[HttpGet]
+    public async Task<ActionResult<string>> GetFile([FromQuery] GetFileCommand query)
+    {
+        // request.File = file;
+        // var stream = file.OpenReadStream();
+        var ergb = await Mediator.Send(request);
+        // await _blobStorageContext.AddDocument(bucketName, file.FileName.Replace('/', '-'), stream); 
+        return Ok(ergb);
+
+        // return BadRequest();
     }*/ 
     
     [HttpPost]
@@ -43,6 +56,14 @@ public class FileController : ApiControllerBase
 
         // return BadRequest();
     }
+    
+    [HttpGet("GetFileFromBucket")]
+    public async Task<FileStreamResult> GetFileFromBucket([FromQuery] GetFileCommandQuery query)
+    {
+        var file = await _blobStorageContext.GetFile(query.BucketName, query.FileName);
+        return File(file, "application/octet-stream", query.FileName);
+        // return await Mediator.Send(query);
+    } 
 
     [HttpPost("UploadFileStream")]
     public async Task<ActionResult<string>> UploadFileStream([FromQuery] CreateFileStreamCommand request)

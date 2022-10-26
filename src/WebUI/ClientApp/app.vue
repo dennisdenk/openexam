@@ -1,5 +1,6 @@
 <template>
     <div>
+        <notifications position="top right" classes="my-custom-class" />
         <NuxtLayout>
             <NuxtPage></NuxtPage>
         </NuxtLayout>
@@ -9,7 +10,13 @@
 
 <script setup>
 
-    
+    import Notifications from '@kyvg/vue3-notification'
+    import { notify } from "@kyvg/vue3-notification";
+
+    notify({
+    title: "Authorization",
+    text: "You have been logged in!",
+    });
 
 
 
